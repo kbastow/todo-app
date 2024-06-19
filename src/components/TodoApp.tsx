@@ -1,4 +1,7 @@
+import * as React from 'react';
 import { useState } from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import Button from '@mui/material/Button';
 
    interface TodoItem {
         id: string;
@@ -39,6 +42,8 @@ import { useState } from 'react';
      };
 
      return (
+      <React.Fragment>
+        <CssBaseline />
        <div>
          <h1>Todo App</h1>
          <input
@@ -46,7 +51,7 @@ import { useState } from 'react';
            value={newTodo}
            onChange={(e) => setNewTodo(e.target.value)}
          />
-         <button onClick={addTodo}>Add Todo</button>
+         <Button variant='contained' onClick={addTodo}>Add Todo</Button>
          <ul>
            {todos.map((todo) => (
              <li key={todo.id}>
@@ -63,6 +68,7 @@ import { useState } from 'react';
            ))}
          </ul>
        </div>
+       </React.Fragment>
      );
    };
 
