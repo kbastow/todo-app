@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'; 
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import useTodos from './hooks/useTodos';
@@ -8,7 +9,7 @@ const App: React.FC = () => {
   const { todos, addTodo, updateTodo, completeTodo, deleteTodo } = useTodos();
 
   return (
-    <Container sx={{ marginTop: 4 }}>
+    <Container>
       <Typography variant="h1" gutterBottom>
         My Todo List
       </Typography>
