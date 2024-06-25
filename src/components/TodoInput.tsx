@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box } from '@mui/material';
+import { TextField, Button } from '@mui/material';
+import StyledForm from '../styles/StyledForm.ts';
 
 interface TodoInputProps {
   addTodo: (name: string, description: string) => void;
 }
+
 
 const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
   const [name, setName] = useState('');
@@ -19,7 +21,7 @@ const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+    <StyledForm component="form" onSubmit={handleSubmit}>
       <TextField
         label="Name"
         value={name}
@@ -35,7 +37,7 @@ const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
       <Button type="submit" variant="contained" color="primary">
         Add Todo
       </Button>
-    </Box>
+    </StyledForm>
   );
 };
 

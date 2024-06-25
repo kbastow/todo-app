@@ -1,16 +1,9 @@
-// src/components/TodoList.tsx
-import React, { useState } from "react";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  IconButton,
-  ListItemSecondaryAction,
-  TextField,
-  Box,
-} from "@mui/material";
-import { Todo } from "../types/types.ts";
-import { Delete, Edit, Check, Save } from "@mui/icons-material";
+import React, { useState } from 'react';
+import { List, ListItemText, IconButton, ListItemSecondaryAction, TextField, Box } from '@mui/material';
+import StyledListItem from '../styles/StyledListItem';
+import StyledForm from '../styles/StyledForm';
+import { Todo } from '../types/types.ts';
+import { Delete, Edit, Check, Save } from '@mui/icons-material';
 
 interface TodoListProps {
   todos: Todo[];
@@ -40,16 +33,14 @@ const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, completeTodo, de
   return (
     <List>
       {todos.map((todo) => (
-        <ListItem
+        <StyledListItem
           key={todo.id}
           dense
           onClick={() => editingId === null && completeTodo(todo.id)}
-          sx={{ flexDirection: 'column', alignItems: 'flex-start' }} // Align items in a column
         >
           {editingId === todo.id ? (
-            <Box
+            <StyledForm
               component="form"
-              sx={{ display: 'flex', flexDirection: 'column', width: '100%', gap: 2 }}
               onSubmit={(e) => {
                 e.preventDefault();
                 handleEditSave(todo.id);
@@ -92,7 +83,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, completeTodo, de
                   <Check />
                 </IconButton>
               </Box>
-            </Box>
+            </StyledForm>
           ) : (
             <>
               <ListItemText
@@ -131,7 +122,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, completeTodo, de
               </ListItemSecondaryAction>
             </>
           )}
-        </ListItem>
+        </StyledListItem>
       ))}
     </List>
   );

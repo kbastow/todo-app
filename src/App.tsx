@@ -9,8 +9,8 @@ const App: React.FC = () => {
 
   return (
     <Container sx={{ marginTop: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Todo List
+      <Typography variant="h1" gutterBottom>
+        My Todo List
       </Typography>
       <TodoInput addTodo={addTodo} />
       <TodoList todos={todos} updateTodo={updateTodo} completeTodo={completeTodo} deleteTodo={deleteTodo} />
