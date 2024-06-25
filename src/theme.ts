@@ -21,6 +21,7 @@ const theme = createTheme({
       defaultProps: {
         variant: 'contained',
         color: 'primary',
+        size: 'small',
       },
     },
     MuiTextField: {

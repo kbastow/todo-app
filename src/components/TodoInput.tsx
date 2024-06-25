@@ -23,19 +23,19 @@ const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
   return (
     <StyledForm component="form" onSubmit={handleSubmit}>
       <TextField
-        label="Name"
+        label="Task name"
         value={name}
         onChange={(e) => setName(e.target.value)}
         fullWidth
       />
       <TextField
-        label="Description"
+        label="Task Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         fullWidth
       />
-      <Button type="submit" variant="contained" color="primary">
-        Add Todo
+      <Button type="submit">
+        Add
       </Button>
     </StyledForm>
   );

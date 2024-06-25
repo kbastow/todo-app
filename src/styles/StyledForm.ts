@@ -3,7 +3,7 @@ import { styled } from '@mui/system';
 
 const StyledForm = styled(Box)(({ theme }) => ({
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: 'row',
   gap: theme.spacing(2),
 }));
 
