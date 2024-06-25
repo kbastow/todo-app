@@ -1,12 +1,21 @@
-import './App.css'
-import TodoApp from './components/TodoApp'
+import React from 'react';
+import TodoInput from './components/TodoInput';
+import TodoList from './components/TodoList';
+import useTodos from './hooks/useTodos';
+import { Container, Typography } from '@mui/material';
 
-function App() {
+const App: React.FC = () => {
+  const { todos, addTodo, updateTodo, completeTodo, deleteTodo } = useTodos();
+
   return (
-    <div className="App">
-      <TodoApp />
-    </div>
+    <Container sx={{ marginTop: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Todo List
+      </Typography>
+      <TodoInput addTodo={addTodo} />
+      <TodoList todos={todos} updateTodo={updateTodo} completeTodo={completeTodo} deleteTodo={deleteTodo} />
+    </Container>
   );
-}
+};
 
 export default App;
