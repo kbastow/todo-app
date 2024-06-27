@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
-import StyledForm from '../styles/StyledForm.ts';
+import React, { useState } from "react";
+import { TextField, Button } from "@mui/material";
+import StyledForm from "../styles/StyledForm.ts";
 
 interface TodoInputProps {
   addTodo: (name: string, description: string) => void;
 }
 
-
 const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim() && description.trim()) {
       addTodo(name, description);
-      setName('');
-      setDescription('');
+      setName("");
+      setDescription("");
     }
   };
 
@@ -34,9 +33,7 @@ const TodoInput: React.FC<TodoInputProps> = ({ addTodo }) => {
         onChange={(e) => setDescription(e.target.value)}
         fullWidth
       />
-      <Button type="submit">
-        Add
-      </Button>
+      <Button type="submit">Add</Button>
     </StyledForm>
   );
 };

@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
-import { List, ListItemText, IconButton, ListItemSecondaryAction, TextField, Box } from '@mui/material';
-import StyledListItem from '../styles/StyledListItem';
-import StyledForm from '../styles/StyledForm';
-import { Todo } from '../types/types.ts';
-import { Delete, Edit, Check, Save } from '@mui/icons-material';
+import React, { useState } from "react";
+import {
+  List,
+  ListItemText,
+  IconButton,
+  ListItemSecondaryAction,
+  TextField,
+  Box,
+} from "@mui/material";
+import StyledListItem from "../styles/StyledListItem";
+import StyledForm from "../styles/StyledForm";
+import { Todo } from "../types/types.ts";
+import { Delete, Edit, Check, Save } from "@mui/icons-material";
 
 interface TodoListProps {
   todos: Todo[];
@@ -12,10 +19,15 @@ interface TodoListProps {
   deleteTodo: (id: number) => void;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, completeTodo, deleteTodo }) => {
+const TodoList: React.FC<TodoListProps> = ({
+  todos,
+  updateTodo,
+  completeTodo,
+  deleteTodo,
+}) => {
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [editName, setEditName] = useState('');
-  const [editDescription, setEditDescription] = useState('');
+  const [editName, setEditName] = useState("");
+  const [editDescription, setEditDescription] = useState("");
 
   const handleEditStart = (id: number, name: string, description: string) => {
     setEditingId(id);
@@ -26,8 +38,8 @@ const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, completeTodo, de
   const handleEditSave = (id: number) => {
     updateTodo(id, editName, editDescription);
     setEditingId(null);
-    setEditName('');
-    setEditDescription('');
+    setEditName("");
+    setEditDescription("");
   };
 
   return (
@@ -54,7 +66,6 @@ const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, completeTodo, de
                 variant="outlined"
                 size="small"
                 label="Name"
-                onClick={(e) => e.stopPropagation()}
               />
               <TextField
                 fullWidth
@@ -63,24 +74,13 @@ const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, completeTodo, de
                 variant="outlined"
                 size="small"
                 label="Description"
-                onClick={(e) => e.stopPropagation()}
               />
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
+              <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1 }}>
                 <IconButton
                   type="submit"
                   color="primary"
-                  onClick={(e) => e.stopPropagation()}
                 >
                   <Save />
-                </IconButton>
-                <IconButton
-                  edge="end"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setEditingId(null);
-                  }}
-                >
-                  <Check />
                 </IconButton>
               </Box>
             </StyledForm>
@@ -89,7 +89,9 @@ const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, completeTodo, de
               <ListItemText
                 primary={todo.name}
                 secondary={todo.description}
-                style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none",
+                }}
               />
               <ListItemSecondaryAction>
                 <IconButton
@@ -112,8 +114,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, updateTodo, completeTodo, de
                 </IconButton>
                 <IconButton
                   edge="end"
-                  onClick={(e) => {
-                    e.stopPropagation();
+                  onClick={() => {
                     completeTodo(todo.id);
                   }}
                 >
