@@ -45,11 +45,7 @@ const TodoList: React.FC<TodoListProps> = ({
   return (
     <List>
       {todos.map((todo) => (
-        <StyledListItem
-          key={todo.id}
-          dense
-          onClick={() => editingId === null && completeTodo(todo.id)}
-        >
+        <StyledListItem key={todo.id}>
           {editingId === todo.id ? (
             <StyledForm
               component="form"
@@ -57,7 +53,6 @@ const TodoList: React.FC<TodoListProps> = ({
                 e.preventDefault();
                 handleEditSave(todo.id);
               }}
-              onClick={(e) => e.stopPropagation()}
             >
               <TextField
                 fullWidth
@@ -76,10 +71,7 @@ const TodoList: React.FC<TodoListProps> = ({
                 label="Description"
               />
               <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1 }}>
-                <IconButton
-                  type="submit"
-                  color="primary"
-                >
+                <IconButton type="submit" color="primary">
                   <Save />
                 </IconButton>
               </Box>
@@ -96,8 +88,7 @@ const TodoList: React.FC<TodoListProps> = ({
               <ListItemSecondaryAction>
                 <IconButton
                   edge="end"
-                  onClick={(e) => {
-                    e.stopPropagation();
+                  onClick={() => {
                     deleteTodo(todo.id);
                   }}
                 >
@@ -105,8 +96,7 @@ const TodoList: React.FC<TodoListProps> = ({
                 </IconButton>
                 <IconButton
                   edge="end"
-                  onClick={(e) => {
-                    e.stopPropagation();
+                  onClick={() => {
                     handleEditStart(todo.id, todo.name, todo.description);
                   }}
                 >
