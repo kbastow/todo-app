@@ -5,7 +5,8 @@ import {
   IconButton,
   ListItemSecondaryAction,
   TextField,
-  Box,
+  Stack,
+  Divider,
 } from "@mui/material";
 import StyledListItem from "../styles/StyledListItem";
 import StyledForm from "../styles/StyledForm";
@@ -61,6 +62,7 @@ const TodoList: React.FC<TodoListProps> = ({
                 variant="outlined"
                 size="small"
                 label="Name"
+                required
               />
               <TextField
                 fullWidth
@@ -69,12 +71,11 @@ const TodoList: React.FC<TodoListProps> = ({
                 variant="outlined"
                 size="small"
                 label="Description"
+                required
               />
-              <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1 }}>
-                <IconButton type="submit" color="primary">
-                  <Save />
-                </IconButton>
-              </Box>
+              <IconButton type="submit" color="primary">
+                <Save />
+              </IconButton>
             </StyledForm>
           ) : (
             <>
@@ -86,30 +87,36 @@ const TodoList: React.FC<TodoListProps> = ({
                 }}
               />
               <ListItemSecondaryAction>
-                <IconButton
-                  edge="end"
-                  onClick={() => {
-                    deleteTodo(todo.id);
-                  }}
+                <Stack
+                  direction="row"
+                  divider={<Divider orientation="vertical" flexItem />}
+                  spacing={1}
                 >
-                  <Delete />
-                </IconButton>
-                <IconButton
-                  edge="end"
-                  onClick={() => {
-                    handleEditStart(todo.id, todo.name, todo.description);
-                  }}
-                >
-                  <Edit />
-                </IconButton>
-                <IconButton
-                  edge="end"
-                  onClick={() => {
-                    completeTodo(todo.id);
-                  }}
-                >
-                  <Check />
-                </IconButton>
+                  <IconButton
+                    edge="end"
+                    onClick={() => {
+                      deleteTodo(todo.id);
+                    }}
+                  >
+                    <Delete />
+                  </IconButton>
+                  <IconButton
+                    edge="end"
+                    onClick={() => {
+                      handleEditStart(todo.id, todo.name, todo.description);
+                    }}
+                  >
+                    <Edit />
+                  </IconButton>
+                  <IconButton
+                    edge="end"
+                    onClick={() => {
+                      completeTodo(todo.id);
+                    }}
+                  >
+                    <Check />
+                  </IconButton>
+                </Stack>
               </ListItemSecondaryAction>
             </>
           )}

@@ -14,6 +14,7 @@ const theme = createTheme({
     h1: {
       fontWeight: 600,
       fontSize: "2rem",
+      textAlign: "center"
     },
   },
   spacing: 4,
