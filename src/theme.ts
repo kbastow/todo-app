@@ -32,6 +32,18 @@ const theme = createTheme({
         size: 'small',
       },
     },
+    MuiListItemText: {
+      styleOverrides: {
+        primary: {
+          fontSize: '1.4rem',
+          color: '#666',
+        },
+        secondary: {
+          fontSize: '1rem',
+          color: '#888',
+        }
+      }
+    }
   },
 });
 

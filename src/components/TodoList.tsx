@@ -61,7 +61,7 @@ const TodoList: React.FC<TodoListProps> = ({
                 onChange={(e) => setEditName(e.target.value)}
                 variant="outlined"
                 size="small"
-                label="Name"
+                label="Task name"
                 required
               />
               <TextField
